@@ -21,7 +21,6 @@ public partial class client
 
     public bool is_active { get; set; }
 
-    [Column(TypeName = "timestamp without time zone")]
     public DateTime created_at { get; set; }
 
     [InverseProperty("client")]
