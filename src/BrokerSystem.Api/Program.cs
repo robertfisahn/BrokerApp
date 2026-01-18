@@ -1,3 +1,6 @@
+using BrokerSystem.Api.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 //swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<BrokerDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("BrokerDb")));
 
 //controlers
 builder.Services.AddControllers();
